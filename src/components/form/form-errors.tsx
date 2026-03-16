@@ -12,12 +12,12 @@ export const FormErrors = ({ id, errors }: Props) => {
     <div
       id={`${id}-error`}
       aria-live="polite"
-      className="mt-2 text-xs text-rose-500"
+      className="mt-2 text-xs text-destructive"
     >
       {errors?.[id]?.map((error: string) => (
         <div
           key={error}
-          className="flex items-center font-medium p-2 border border-rose-500 bg-rose-500/10 rounded-sm"
+          className="flex items-center font-medium p-2 border border-destructive bg-destructive/10 rounded-sm"
         >
           <XCircle className="h-4 w-4 mr-2" />
           {error}
