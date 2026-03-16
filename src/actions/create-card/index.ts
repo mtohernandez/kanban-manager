@@ -1,6 +1,6 @@
 "use server";
 
-import { ACTION, ENTITY_TYPE } from "@prisma/client";
+import { ACTION, ENTITY_TYPE } from "@/generated/prisma/client";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { InputType } from "./types";
@@ -10,7 +10,7 @@ import { CreateCardSchema } from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 
 const handler = async (data: InputType) => {
-  const { userId, orgId } = auth();
+  const { userId, orgId } = await auth();
 
   if (!userId || !orgId) {
     return {

@@ -8,7 +8,7 @@ import { createSafeAction } from "@/lib/create-safe-action";
 import { UpdateCardOrderSchema } from "./schema";
 
 const handler = async (data: InputType) => {
-  const { userId, orgId } = auth();
+  const { userId, orgId } = await auth();
 
   if (!userId || !orgId) {
     return {
