@@ -1,4 +1,4 @@
 export const siteConfig = {
-  name: "Trello",
-  description: "Collaborate, manage projects, and reach new productivity peaks"
+  name: "kanban",
+  description: "The kanban board your team actually wants to use"
 }
