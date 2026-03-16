@@ -1,6 +1,6 @@
 "use client";
 
-import { AuditLog } from "@prisma/client";
+import { AuditLog } from "@/generated/prisma/browser";
 import { fetcher } from "@/lib/fetcher";
 import { CardWithList } from "@/types";
 import { useQuery } from "@tanstack/react-query";
@@ -32,7 +32,7 @@ export const CardModal = () => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         {!cardData ? <Header.Skeleton /> : <Header data={cardData} />}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_150px] md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_180px] gap-4">
           <div className="cols-span-3">
             <div className="w-full space-y-6">
               {!cardData ? (
