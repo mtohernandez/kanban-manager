@@ -5,13 +5,14 @@ import { redirect } from "next/navigation";
 import { ListContainer } from "./_components/list-container";
 
 interface Props {
-  params: {
+  params: Promise<{
     boardId: string;
-  };
+  }>;
 }
 
 const Page = async ({ params }: Props) => {
-  const { orgId } = auth();
+  const { boardId } = await params;
+  const { orgId } = await auth();
 
   if (!orgId) {
     redirect("/select-org");
@@ -19,7 +20,7 @@ const Page = async ({ params }: Props) => {
 
   const lists = await db.list.findMany({
     where: {
-      boardId: params.boardId,
+      boardId,
       board: {
         orgId,
       },
@@ -38,7 +39,7 @@ const Page = async ({ params }: Props) => {
 
   return (
     <div className="p-4 h-full overflow-x-auto">
-      <ListContainer boardId={params.boardId} data={lists} />
+      <ListContainer boardId={boardId} data={lists} />
     </div>
   );
 };
