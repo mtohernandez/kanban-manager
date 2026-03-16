@@ -10,11 +10,11 @@ import { FormPopover } from "@/components/form/form-popover";
 
 const Navbar = () => {
   return (
-    <nav className="fixed z-50 w-full h-14 px-4 border-b shadow-sm bg-white flex items-center">
+    <nav className="fixed z-50 w-full h-14 px-4 border-b shadow-sm bg-background flex items-center">
       <MobileSidebar />
       <div className="flex items-center gap-x-4">
         <div className="hidden md:flex">
-          <span className="font-semibold">Trello</span>
+          <span className="font-semibold">Kanban Manager</span>
         </div>
         <FormPopover align="start" side="bottom" sideOffset={18}>
         <Button
@@ -49,7 +49,6 @@ const Navbar = () => {
           }}
         />
         <UserButton
-          afterSignOutUrl="/"
           appearance={{
             elements: {
               avatarBox: {
