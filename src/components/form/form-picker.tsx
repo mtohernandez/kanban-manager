@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Check, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { Check } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
 import { cn } from "@/lib/utils";
-import { unsplash } from "@/lib/unsplash";
 import { defaultImages } from "@/constants/images";
 import Link from "next/link";
 import { FormErrors } from "./form-errors";
@@ -19,42 +18,8 @@ interface Props {
 export const FormPicker = ({ id, errors }: Props) => {
   const { pending } = useFormStatus();
 
-  const [images, setImages] = useState<Array<Record<string, any>>>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const images = defaultImages;
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const result = await unsplash.photos.getRandom({
-          collectionIds: ["317099"],
-          count: 9,
-        });
-
-        if (result && result.response) {
-          const newImages = result.response as Array<Record<string, any>>;
-          setImages(newImages);
-        } else {
-          console.error("Failed to fetch images");
-        }
-      } catch (error) {
-        console.error(error);
-        setImages(defaultImages);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchImages();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="p-6 flex items-center justify-center">
-        <Loader2 className="h-6 w-6 text-sky-700 animate-spin" />
-      </div>
-    );
-  }
 
   return (
     <div className="relative">
@@ -77,11 +42,13 @@ export const FormPicker = ({ id, errors }: Props) => {
               name={id}
               className="hidden"
               checked={selectedImageId === image.id}
+              readOnly
               disabled={pending}
               value={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
             />
             <Image
               fill
+              sizes="(max-width: 768px) 33vw, 100px"
               src={image.urls.thumb}
               alt="unsplash image"
               className="object-cover rounded-sm"
