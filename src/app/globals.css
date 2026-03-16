@@ -1,6 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar-background: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar: var(--sidebar);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+
+  --animate-solen-spin: solen-spin 3.6s steps(18) infinite;
+  --animate-solen-grow: solen-grow 0.9s steps(3) alternate infinite;
+  --animate-appear-chunky: appear-chunky 0.4s steps(5) forwards;
+  --animate-appear: appear 0.18s steps(3) forwards;
+}
 
 html,
 body,
@@ -8,68 +52,94 @@ body,
   height: 100%;
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+:root {
+  --default-transition-timing-function: steps(3);
+  --ease-in: steps(3);
+  --ease-out: steps(3);
+  --ease-in-out: steps(3);
+  --tw-ease: steps(3);
+  --animate-spin: spin 1s steps(8) infinite;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+  --radius: 0.625rem;
+  --background: oklch(0.98 0.005 60);
+  --foreground: oklch(0.13 0.02 60);
+  --card: oklch(0.98 0.005 60);
+  --card-foreground: oklch(0.13 0.02 60);
+  --popover: oklch(0.98 0.005 60);
+  --popover-foreground: oklch(0.13 0.02 60);
+  --primary: oklch(0.13 0.02 60);
+  --primary-foreground: oklch(0.98 0.005 60);
+  --secondary: oklch(0.95 0.01 65);
+  --secondary-foreground: oklch(0.13 0.02 60);
+  --muted: oklch(0.95 0.01 65);
+  --muted-foreground: oklch(0.55 0.02 60);
+  --accent: oklch(0.92 0.02 65);
+  --accent-foreground: oklch(0.13 0.02 60);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.90 0.015 65);
+  --input: oklch(0.90 0.015 65);
+  --ring: oklch(0.88 0.08 70);
+  --sidebar-background: oklch(0.96 0.008 60);
+  --sidebar-foreground: oklch(0.13 0.02 60);
+  --sidebar-primary: oklch(0.13 0.02 60);
+  --sidebar-primary-foreground: oklch(0.98 0.005 60);
+  --sidebar-accent: oklch(0.93 0.015 65);
+  --sidebar-accent-foreground: oklch(0.13 0.02 60);
+  --sidebar-border: oklch(0.90 0.015 65);
+  --sidebar-ring: oklch(0.88 0.08 70);
+  --sidebar: oklch(0.96 0.008 60);
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+.dark {
+  --background: oklch(0.13 0.02 60);
+  --foreground: oklch(0.98 0.005 60);
+  --card: oklch(0.13 0.02 60);
+  --card-foreground: oklch(0.98 0.005 60);
+  --popover: oklch(0.13 0.02 60);
+  --popover-foreground: oklch(0.98 0.005 60);
+  --primary: oklch(0.88 0.08 70);
+  --primary-foreground: oklch(0.13 0.02 60);
+  --secondary: oklch(0.22 0.015 60);
+  --secondary-foreground: oklch(0.98 0.005 60);
+  --muted: oklch(0.22 0.015 60);
+  --muted-foreground: oklch(0.65 0.02 60);
+  --accent: oklch(0.22 0.015 60);
+  --accent-foreground: oklch(0.98 0.005 60);
+  --destructive: oklch(0.396 0.141 25.768);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.25 0.015 60);
+  --input: oklch(0.25 0.015 60);
+  --ring: oklch(0.88 0.08 70);
+  --sidebar-background: oklch(0.17 0.018 60);
+  --sidebar-foreground: oklch(0.98 0.005 60);
+  --sidebar-primary: oklch(0.88 0.08 70);
+  --sidebar-primary-foreground: oklch(0.13 0.02 60);
+  --sidebar-accent: oklch(0.22 0.015 60);
+  --sidebar-accent-foreground: oklch(0.98 0.005 60);
+  --sidebar-border: oklch(0.25 0.015 60);
+  --sidebar-ring: oklch(0.88 0.08 70);
+  --sidebar: oklch(0.17 0.018 60);
+}
 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+@keyframes solen-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+@keyframes solen-grow {
+  from { transform: scale(0.72); }
+  to { transform: scale(1); }
+}
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+@keyframes appear-chunky {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-  }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @layer base {
@@ -78,5 +148,6 @@ body,
   }
   body {
     @apply bg-background text-foreground;
+    letter-spacing: -0.01em;
   }
 }
