@@ -2,7 +2,7 @@
 
 import { useCardModal } from "@/hooks/use-card-modal";
 import { Draggable } from "@hello-pangea/dnd";
-import { Card } from "@prisma/client";
+import { Card } from "@/generated/prisma/browser";
 
 interface Props {
   data: Card;
@@ -21,7 +21,7 @@ export const CardItem = ({ index, data }: Props) => {
           ref={provided.innerRef}
           onClick={() => cardModal.onOpen(data.id)}
           role="button"
-          className="truncate border-2 border-transparent hover:border-black py-2 px-3 text-sm bg-white rounded-md shadow-sm"
+          className="truncate border-2 border-transparent hover:border-foreground py-2 px-3 text-sm bg-card rounded-md shadow-sm"
         >
           {data.title}
         </div>

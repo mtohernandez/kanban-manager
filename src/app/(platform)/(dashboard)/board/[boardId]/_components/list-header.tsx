@@ -2,7 +2,7 @@
 
 import { toast } from "sonner";
 import { useState, useRef, ElementRef } from "react";
-import { List } from "@prisma/client";
+import { List } from "@/generated/prisma/browser";
 import { useEventListener } from "usehooks-ts";
 
 import { FormInput } from "@/components/form/form-input";
@@ -82,7 +82,7 @@ export const ListHeader = ({ data, onAddCard }: Props) => {
             id="title"
             placeholder="Enter list title..."
             defaultValue={title}
-            className="text-sm py-1 h-7 font-medium border-transparent hover:border-input focus:border-input transition truncate bg-transparent focus:bg-white"
+            className="text-sm py-1 h-7 font-medium border-transparent hover:border-input focus:border-input transition truncate bg-transparent focus:bg-background"
           />
           <button type="submit" hidden />
         </form>

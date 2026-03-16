@@ -50,7 +50,7 @@ export const ListForm = () => {
   };
 
   useEventListener("keydown", onKeyDown);
-  useOnClickOutside(formRef, disableEditing);
+  useOnClickOutside(formRef as React.RefObject<HTMLElement>, disableEditing);
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
@@ -64,7 +64,7 @@ export const ListForm = () => {
         <form
           action={onSubmit}
           ref={formRef}
-          className="w-full p-3 rounded-md bg-white space-y-4 shadow-md"
+          className="w-full p-3 rounded-md bg-card space-y-4 shadow-md"
         >
           <FormInput
             ref={inputRef}
@@ -89,7 +89,7 @@ export const ListForm = () => {
     <ListWrapper>
       <button
         onClick={enableEditing}
-        className="w-full rounded-sm bg-white/80 hover:bg-white/50 transition p-3 flex items-center font-medium text-sm"
+        className="w-full rounded-sm bg-background/80 hover:bg-background/50 transition p-3 flex items-center font-medium text-sm"
       >
         <Plus className="h-4 w-4 mr-2" />
         Add a list

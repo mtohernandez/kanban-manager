@@ -2,7 +2,7 @@
 
 import { toast } from "sonner";
 import { ElementRef, useRef } from "react";
-import { List } from "@prisma/client";
+import { List } from "@/generated/prisma/browser";
 import { useAction } from "@/hooks/use-action";
 import { deleteList } from "@/actions/delete-list";
 import { copyList } from "@/actions/copy-list";
@@ -66,12 +66,12 @@ export const ListOptions = ({ data, onAddCard }: Props) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="px-0 pt-3 pb-3" side="bottom" align="start">
-        <div className="text-sm font-medium text-center text-neutral-600">
+        <div className="text-sm font-medium text-center text-muted-foreground">
           List actions
         </div>
         <PopoverClose asChild ref={closeRef}>
           <Button
-            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
+            className="h-auto w-auto p-2 absolute top-2 right-2 text-muted-foreground"
             variant="ghost"
           >
             <X className="h-4 w-4" />

@@ -42,7 +42,7 @@ export const ListItem = ({ data, index }: Props) => {
         >
           <div
             {...provided.dragHandleProps}
-            className="w-full rounded-md bg-[#f1f2f4] shadow-md pb-2"
+            className="w-full rounded-md bg-muted shadow-md pb-2"
           >
             <ListHeader data={data} onAddCard={enableEditing} />
             <Droppable droppableId={data.id} type="card">

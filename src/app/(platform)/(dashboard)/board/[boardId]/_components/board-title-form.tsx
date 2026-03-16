@@ -1,7 +1,7 @@
 "use client";
 
 import { ElementRef, useRef, useState } from "react";
-import { Board } from "@prisma/client";
+import { Board } from "@/generated/prisma/browser";
 
 import { Button } from "@/components/ui/button";
 import { FormInput } from "@/components/form/form-input";
