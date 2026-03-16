@@ -1,4 +1,4 @@
-import { AuditLog } from "@prisma/client";
+import { AuditLog } from "@/generated/prisma/browser";
 import { format } from "date-fns";
 
 import { generateLogMessage } from "@/lib/generate-log-message";
@@ -19,7 +19,7 @@ export const ActivityItem = ({
       </Avatar>
       <div className="flex flex-col space-y-0.5">
         <p className="text-sm text-muted-foreground"> 
-          <span className="font-semibold lowercase text-neutral-700 mr-2">
+          <span className="font-semibold lowercase text-foreground mr-2">
             {data.userName}
           </span>
           {generateLogMessage(data)}

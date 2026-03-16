@@ -11,7 +11,7 @@ import { getAvailableCount } from "@/lib/org-limit";
 import { MAX_FREE_BOARDS } from "@/constants/boards";
 
 export const BoardList = async () => {
-  const { orgId } = auth();
+  const { orgId } = await auth();
 
   if (!orgId) return redirect("/select-org");
 
@@ -28,7 +28,7 @@ export const BoardList = async () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center font-semibold text-lg text-neutral-700">
+      <div className="flex items-center font-semibold text-lg text-foreground">
         <User2 className="h-6 w-6 mr-2" />
         Your boards
       </div>
@@ -38,7 +38,7 @@ export const BoardList = async () => {
             <Link
               key={board.id}
               href={`/board/${board.id}`}
-              className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-sky-700 rounded-sm p-2"
+              className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-primary rounded-sm p-2"
               style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
             >
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
