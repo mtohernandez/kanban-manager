@@ -69,7 +69,7 @@ export const Header = ({ data }: Props) => {
 
   return (
     <div className="flex items-start gap-x-3 mb-6 w-full">
-      <Layout className="h-5 w-5 mt-1 text-neutral-700" />
+      <Layout className="h-5 w-5 mt-1 text-muted-foreground" />
       <div className="w-full">
         <form action={onSubmit}>
           <FormInput
@@ -78,7 +78,7 @@ export const Header = ({ data }: Props) => {
             onBlur={onBlur}
             defaultValue={title}
             errors={fieldErrors}
-            className="font-semibold text-xl px-1 text-neutral-700 bg-transparent relative -left-1.5 w-[95%] focus-visible:bg-white focus-visible:border-input border-0 mb-0.5 truncate"
+            className="font-semibold text-xl px-1 text-foreground bg-transparent relative -left-1.5 w-[95%] focus-visible:bg-background focus-visible:border-input border-0 mb-0.5 truncate"
           />
         </form>
         <p className="text-sm text-muted-foreground">
@@ -92,10 +92,10 @@ export const Header = ({ data }: Props) => {
 Header.Skeleton = function SkeletonHeader() {
   return (
     <div className="flex items-start gap-x-3 mb-6">
-      <Skeleton className="h-6 w-6 mt-1 bg-neutral-200" />
+      <Skeleton className="h-6 w-6 mt-1 bg-muted" />
       <div>
-        <Skeleton className="h-6 w-24 mb-1 bg-neutral-200" />
-        <Skeleton className="h-4 w-12 bg-neutral-200" />
+        <Skeleton className="h-6 w-24 mb-1 bg-muted" />
+        <Skeleton className="h-4 w-12 bg-muted" />
       </div>
     </div>
   );

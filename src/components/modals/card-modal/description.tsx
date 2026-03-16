@@ -62,7 +62,7 @@ export const Description = ({ data }: Props) => {
   };
 
   useEventListener("keydown", onKeyDown);
-  useOnClickOutside(formRef, disableEditing);
+  useOnClickOutside(formRef as React.RefObject<HTMLElement>, disableEditing);
 
   const onSubmit = (formData: FormData) => {
     const description = formData.get("description") as string;
@@ -78,9 +78,9 @@ export const Description = ({ data }: Props) => {
   return (
     <div className="flex flex-col items-start w-full">
       <div className="flex gap-x-3">
-        <AlignLeft className="h-5 w-5 mt-0.5 text-neutral-700" />
+        <AlignLeft className="h-5 w-5 mt-0.5 text-muted-foreground" />
         <div className="w-full">
-          <p className="font-semibold text-neutral-700 mb-2">Description</p>
+          <p className="font-semibold text-foreground mb-2">Description</p>
         </div>
       </div>
       {isEditing ? (
@@ -110,7 +110,7 @@ export const Description = ({ data }: Props) => {
         <div
           onClick={enableEditing}
           role="button"
-          className="min-h-[72px] bg-neutral-200 text-sm font-medium py-3 px-3.5 rounded-md w-full"
+          className="min-h-[72px] bg-muted text-sm font-medium py-3 px-3.5 rounded-md w-full"
         >
           {data.description || "Add a more detailed description..."}
         </div>
@@ -122,10 +122,10 @@ export const Description = ({ data }: Props) => {
 Description.Skeleton = function SkeletonDescription() {
   return (
     <div className="flex items-start gap-x-3 w-full">
-      <Skeleton className="h-6 w-6 bg-neutral-200" />
+      <Skeleton className="h-6 w-6 bg-muted" />
       <div className="w-full">
-        <Skeleton className="w-24 h-6 mb-2 bg-neutral-200" />
-        <Skeleton className="w-full h-[78px] bg-neutral-200" />
+        <Skeleton className="w-24 h-6 mb-2 bg-muted" />
+        <Skeleton className="w-full h-[78px] bg-muted" />
       </div>
     </div>
   );
